@@ -7,6 +7,7 @@
         <meta charset="UTF-8"/>
         <script src="js/functions.js"></script>
     </head>
+
     <body>
         <h2>Formulário Básico (Post)</h2>
         <form id="postForm">
@@ -19,26 +20,30 @@
             <label for="sigla_cap">Sigla:</label>
             <input type="text" id ="sigla_cap" name="sigla_cap"/>
 
-            <button type="submit" onclick="return submitPost()">Submit</button>
+            <button type="submit" onclick="return submitPost()">Submit1</button>
         </form>
 
         <h2>Formulário Básico (Put)</h2>
         <form id="putForm">
             <label for="id">Id:</label>
             <input type="text" id ="id" name="id"/>   
+
             <label for="nome_cap">Nome:</label>
             <input type="text" id ="nome_cap" name="nome_cap"/>
+
             <label for="estado_cap">Estado:</label>
             <input type="text" id ="estado_cap" name="estado_cap"/>
+            
             <label for="sigla_cap">Sigla:</label>
             <input type="text" id ="sigla_cap" name="sigla_cap"/>  
-            <button type="submit" onclick="return submitPut()">Submit</button>
+            
+            <button type="submit" onclick="return submitPut()">Submit2</button>
         </form>
 
         <h2>Formulário Básico (Delete)</h2>
         <form id="deleteForm">
             <label>Id:<input type="text" name="id"/></label>        
-            <button type="submit" onclick="return submitDelete()">Submit</button>
+            <button type="submit" onclick="return submitDelete()">Submit3</button>
         </form>
     
     </body>
