@@ -1,4 +1,4 @@
-let url = "https://tt905.herokuapp.com/mensagens/"
+let url = "https://tt905.herokuapp.com/capitais/"
 
 async function callFetchWithGet(){
     let headers = new Headers();
@@ -18,7 +18,7 @@ async function callFetchWithGet(){
     }
 }
 
-async function callFetchWithPost(mensagem){
+async function callFetchWithPost(Nome, Estado, Sigla){
     const options = {
         method : 'POST',
         mode: 'cors',
@@ -27,13 +27,17 @@ async function callFetchWithPost(mensagem){
             'content-type' : 'application/json'
         },
         body :JSON.stringify({
-            'mensagem' : mensagem
+                "capital":{
+                    "Nome": Nome,
+                    "Estado": Estado,
+                    "Sigla": Sigla   
+                }
         })
     }
     await fetch(url, options);
 }
 
-async function callFetchWithPut(id, novaMensagem){
+async function callFetchWithPut(id, Nome, Estado, Sigla){
     const options = {
         method : 'PUT',
         mode: 'cors',
@@ -42,7 +46,11 @@ async function callFetchWithPut(id, novaMensagem){
             'content-type' : 'application/json'            
         }, 
         body :JSON.stringify({
-            'mensagem' : novaMensagem
+            "capital":{
+                "Nome": Nome,
+                "Estado": Estado,
+                "Sigla": Sigla   
+            }
         })
     }
     await fetch(`${url}${id}`, options);
@@ -68,16 +76,28 @@ function submitPost(){
     console.log("entrei na função");
     
     const form = document.forms['postForm'];    
-    const mensagem = form["mensagem"].value;
-    callFetchWithPost(mensagem);
+    const Nome = form["nome_cap"].value;
+    const Estado = form["estado_cap"].value;
+    const Sigla = form["sigla_cap"].value;
+
+    if((Nome != '') && (Estado != '') && (Sigla != '')){
+        callFetchWithPost(Nome, Estado, Sigla);}
+        else{ alert('Preencha todos os campos!');}
+
     return false; // Evitar o reload da tela.
 }
 
 function submitPut(){
     const form = document.forms['putForm'];  
     const id = form["id"].value;  
-    const mensagem = form["mensagem"].value;
-    callFetchWithPut(id, mensagem);
+    const Nome = form["nome_cap"].value;
+    const Estado = form["estado_cap"].value;
+    const Sigla = form["sigla_cap"].value;
+
+    if((id != '') && (Nome != '') && (Estado != '') && (Sigla != '')){
+        callFetchWithPost(id, Nome, Estado, Sigla);}
+        else{ alert('Preencha todos os campos!');}
+
     return false; // Evitar o reload da tela.
 }
 
